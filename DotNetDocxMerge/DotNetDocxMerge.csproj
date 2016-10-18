@@ -41,7 +41,7 @@
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="LumenWorks.Framework.IO">
-      <HintPath>..\packages\SEOChecker.1.9.4.1\lib\LumenWorks.Framework.IO.dll</HintPath>
+      <HintPath>..\packages\LumenWorksCsvReader.3.9.1\lib\net20\LumenWorks.Framework.IO.dll</HintPath>
     </Reference>
     <Reference Include="PackageGarden.Licensing">
       <HintPath>..\packages\SEOChecker.1.9.4.1\lib\PackageGarden.Licensing.dll</HintPath>
