@@ -34,8 +34,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DTG.Spreadsheet">
+      <HintPath>..\packages\SEOChecker.1.9.4.1\lib\DTG.Spreadsheet.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="LumenWorks.Framework.IO">
+      <HintPath>..\packages\SEOChecker.1.9.4.1\lib\LumenWorks.Framework.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="PackageGarden.Licensing">
+      <HintPath>..\packages\SEOChecker.1.9.4.1\lib\PackageGarden.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="SEOChecker">
+      <HintPath>..\packages\SEOChecker.1.9.4.1\lib\SEOChecker.dll</HintPath>
+    </Reference>
+    <Reference Include="SEOChecker.Core">
+      <HintPath>..\packages\SEOChecker.1.9.4.1\lib\SEOChecker.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SEOChecker.Extensions">
+      <HintPath>..\packages\SEOChecker.1.9.4.1\lib\SEOChecker.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SEOChecker.Library">
+      <HintPath>..\packages\SEOChecker.1.9.4.1\lib\SEOChecker.Library.dll</HintPath>
+    </Reference>
+    <Reference Include="SEOChecker.Validators">
+      <HintPath>..\packages\SEOChecker.1.9.4.1\lib\SEOChecker.Validators.dll</HintPath>
     </Reference>
     <Reference Include="swxben.docxtemplateengine">
       <HintPath>..\packages\swxben.docxtemplateengine.0.1.5\lib\net40\swxben.docxtemplateengine.dll</HintPath>
@@ -49,6 +73,9 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Umbraco.Licensing">
+      <HintPath>..\packages\SEOChecker.1.9.4.1\lib\Umbraco.Licensing.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -90,6 +117,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="App_Data\temp\SEOChecker\SEOChecker.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -99,6 +127,94 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\temp\SEOChecker\SEOChecker.DataTypes.dll" />
+    <Content Include="App_Data\temp\SEOChecker\SEOChecker.Events.dll" />
+    <Content Include="App_Data\temp\SEOChecker\SEOChecker.LegacyDataTypes.dll" />
+    <Content Include="App_Data\temp\SEOChecker\SEOChecker.LegacyEvents.dll" />
+    <Content Include="App_Data\temp\SEOChecker\SEOChecker.LegacyLogging.dll" />
+    <Content Include="App_Data\temp\SEOChecker\SEOChecker.LegacyPropertyEditorConverters.dll" />
+    <Content Include="App_Data\temp\SEOChecker\SEOChecker.Logging.dll" />
+    <Content Include="App_Data\temp\SEOChecker\SEOChecker.MVC.dll" />
+    <Content Include="App_Data\temp\SEOChecker\SEOChecker.PropertyEditorConverters.dll" />
+    <Resource Include="App_Data\temp\SEOChecker\seochecker-notification.xslt" />
+    <Resource Include="App_Data\temp\SEOChecker\seochecker-scheduledtask.xslt" />
+    <Content Include="App_Plugins\SEOChecker\css\seochecker-propertyeditors.css" />
+    <Content Include="App_Plugins\SEOChecker\directives\valShowError.js" />
+    <Content Include="App_Plugins\SEOChecker\redirects\redirectsController.js" />
+    <Content Include="App_Plugins\SEOChecker\redirects\redirectseditor.html" />
+    <Content Include="App_Plugins\SEOChecker\RobotsTxtEditor\robotstxteditor.html" />
+    <Content Include="App_Plugins\SEOChecker\seochecker\seoCheckerPreValueEditor.html" />
+    <Content Include="App_Plugins\SEOChecker\seochecker\seoCheckerPropertyEditor.html" />
+    <Content Include="App_Plugins\SEOChecker\seochecker\seoCheckerPropertyEditorController.js" />
+    <Content Include="App_Plugins\SEOChecker\XMLSitemapEditor\xmlsitemapeditor.html" />
+    <Content Include="Umbraco\Plugins\SEOChecker\css\seochecker-belle.css" />
+    <Content Include="Umbraco\Plugins\SEOChecker\css\seochecker-legacy.css" />
+    <Content Include="Umbraco\Plugins\SEOChecker\css\seochecker.css" />
+    <Content Include="Umbraco\Plugins\SEOChecker\css\seochecker_advancedSettingsPanel.css" />
+    <Content Include="Umbraco\Plugins\SEOChecker\css\seochecker_datatype.css" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Actions\bug.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Actions\chain-edit.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Actions\delete.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Actions\document-pencil.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Actions\navigation.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Actions\script-code.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Content\arrow-down.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Content\arrow-up.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Content\hammer-screwdriver.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Content\seochecker.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tray\seochecker-tray.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tree\application-pencil.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tree\blue-document-text.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tree\calendar.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tree\calendar-pencil.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tree\chain-arrow.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tree\chain-exclamation.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tree\chain-pencil.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tree\document-excel.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tree\documents-stack.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tree\home.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tree\home-edit.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tree\inbox-arrow.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tree\light-bulb.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tree\magnifier-zoom.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tree\mail.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tree\mail-pencil.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tree\mails.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tree\robot.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tree\script-codeTree.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tree\server-pencil.png" />
+    <Resource Include="Umbraco\Plugins\SEOChecker\Images\Tree\table-pencil.png" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\Dialogs\BulkAction.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\Dialogs\ConfirmDelete.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\Dialogs\ConfirmDeleteIgnorelist.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\IgnoreList\IgnoredConfigurationIssues.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\IgnoreList\IgnoredInboundLinks.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\IgnoreList\IgnoredValidationIssues.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\Issues\ConfigurationIssues.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\Issues\InboundLinks.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\Issues\ValidationIssues.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\LicenseError.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\Notifications.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\Redirects\ImportRedirects.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\Redirects\RedirectExport.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\Redirects\Redirects.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\ScheduleValidation.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\Settings\Config.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\Settings\DocumentTypeSettings.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\Settings\EditRobots.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\Settings\EmailSettings.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\Settings\RootNodeSettings.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\Validate.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Pages\ValidationQueue.aspx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\scripts\seochecker.js" />
+    <Content Include="Umbraco\Plugins\SEOChecker\scripts\seochecker_advancedsettingspanel.js" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Usercontrols\CreateRedirectControl.ascx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Usercontrols\ScheduledTaskOptions.ascx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Usercontrols\SeoCheckerDashboard.ascx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Usercontrols\SEOCheckerInstaller.ascx" />
+    <Content Include="Umbraco\Plugins\SEOChecker\Usercontrols\ValidationPicker.ascx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
