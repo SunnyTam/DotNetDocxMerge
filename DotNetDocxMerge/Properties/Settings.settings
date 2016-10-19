@@ -1,7 +1,15 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DotNetDocxMerge.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="template" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\Charles\Desktop\sunny\pop\P1.docx</Value>
+    </Setting>
+    <Setting Name="csv" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\unycsvgen\export.csv</Value>
+    </Setting>
+    <Setting Name="dist" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\Charles\Desktop\sunny\pop\test\P1.docx</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>
