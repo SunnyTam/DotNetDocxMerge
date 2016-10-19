@@ -49,9 +49,9 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="0*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="btnStart" Content="Start" Margin="225,10,225,61" Click="btnStart_Click"/>
-            <ProgressBar x:Name="pgb" HorizontalAlignment="Left" Height="25" Margin="111,47,0,0" VerticalAlignment="Top" Width="304"/>
-            <TextBlock x:Name="txtpgb" HorizontalAlignment="Left" Margin="247,47,0,0" TextWrapping="Wrap" Text="0:00%" VerticalAlignment="Top" Height="16"/>
+            <Button x:Name="btnStart" Content="Start" Margin="201,40,249,31" Click="btnStart_Click"/>
+            <ProgressBar x:Name="pgb" HorizontalAlignment="Left" Height="25" Margin="58,10,0,0" VerticalAlignment="Top" Width="367"/>
+            <TextBlock x:Name="txtpgb" HorizontalAlignment="Left" Margin="225,10,0,0" TextWrapping="Wrap" Text="0:00%" VerticalAlignment="Top" Height="16"/>
         </Grid>
         <TextBox x:Name="txtTemplate" Style="{StaticResource placeHolder}" Tag="Path of word template" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="61,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270"/>
         <TextBox x:Name="txtCsv" Style="{StaticResource placeHolder}" Tag="Path of csv" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="61,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Grid.Row="1"/>
