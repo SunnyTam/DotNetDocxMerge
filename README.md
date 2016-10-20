@@ -13,3 +13,10 @@ Build in Visual Studio.
 
 ##Screens
 ![alt tag](https://raw.githubusercontent.com/SunnyTam/DotNetDocxMerge/master/DotNetDocxMerge/mail-merge-generator.png)
+
+##Features
+* Merge from csv
+* Auto new page
+* Will not change text format
+* Keep template size/margins
+* Progress bar display
