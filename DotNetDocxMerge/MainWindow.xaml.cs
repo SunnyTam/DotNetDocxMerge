@@ -125,21 +125,26 @@ namespace DotNetDocxMerge
                         var headers = csv.GetFieldHeaders();
                         while (csv.ReadNextRecord())
                         {
+                            if(csv.CurrentRecordIndex != 0)docuement.InsertSectionPageBreak();
                             docuement.InsertDocument(template);
                             for (var i = 0; i < fieldCount; i++)
                             {
                                 docuement.ReplaceText(String.Format("<<{0}>>", headers[i]), csv[i]);
                             }
-                            Task t =  UpdatePgbAsync((double)csv.CurrentRecordIndex / lineCount * 100);
+                            Task t =  UpdatePgbAsync((double)(csv.CurrentRecordIndex + 1) / lineCount * 100);
                            
                         }
                         
                     }
 
                 }
-                Task t2 = UpdatePgbAsync(100D);
-                Task t3 = FinishMergeAsync();
                 docuement.Save();
+                if (docuement.Text.Contains("<<") || docuement.Text.Contains(">>"))
+                {
+                    MessageBox.Show("There is some << / >> not merged.");
+                }
+                Task t2 = FinishMergeAsync();
+                
             }
         }
 

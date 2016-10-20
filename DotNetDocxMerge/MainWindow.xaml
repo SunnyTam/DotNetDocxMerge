@@ -1,7 +1,7 @@
 ﻿<Window x:Class="DotNetDocxMerge.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525" Initialized="Window_Initialized">
+        Title="Mail Merge Generator" Height="350" Width="525" Initialized="Window_Initialized">
     <Window.Resources>
         <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="Template">
@@ -60,7 +60,7 @@
         <Button x:Name="btnCsv" Content="Browse" Grid.Column="1" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="75" Grid.Row="1" Click="btnCsv_Click"/>
         <Button x:Name="btnDist" Content="Browse" Grid.Column="1" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="75" Grid.Row="2" Click="btnDist_Click"/>
         <Label Content="Word Template" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.375,-0.038" Margin="10,4,0,0"/>
-        <Label Content="Data Csv" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.375,-0.038" Margin="10,4,0,0" Grid.Row="1"/>
+        <Label Content="Csv" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.375,-0.038" Margin="10,4,0,0" Grid.Row="1"/>
         <Label Content="Distination" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.375,-0.038" Margin="10,4,0,0" Grid.Row="2"/>
     </Grid>
 </Window>
