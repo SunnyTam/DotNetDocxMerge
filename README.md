@@ -4,7 +4,7 @@ This is a gui project for merge data to  Microsoft Word document(.docx) from csv
 ## How to use
 All you need is the  Microsoft Word document (.docx) which act as a template and an Excel (.csv) file which contains rows of data to bind to template.
 
-The word document should contain "<<yourData>>" as a template marker. e.g. <<myName>> <<id-no>>
+The word document should contain "\<\<yourData\>\>" as a template marker. e.g. \<\<myName\>\> \<\<id-no\>\>
 
 The first row of csv will count as header. Please make sure each header exist only once. 
 
@@ -13,3 +13,4 @@ Build in Visual Studio.
 
 ## Screens
 
+,,
