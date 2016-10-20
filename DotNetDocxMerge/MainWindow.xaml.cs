@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -16,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LumenWorks.Framework.IO.Csv;
 using Novacode;
+using MessageBox = System.Windows.MessageBox;
 
 namespace DotNetDocxMerge
 {
@@ -40,7 +42,88 @@ namespace DotNetDocxMerge
             txtCsv.Text = OpenSelectFileDialog("csv", "Text Files" );
         }
 
-        #region libs
+        private void btnDist_Click(object sender, RoutedEventArgs e)
+        {
+            txtDist.Text = OpenSaveFileDialog();
+        }
+
+        
+
+        private async void btnStart_Click(object sender, RoutedEventArgs e)
+        {
+            string dist = txtDist.Text;
+            string csv = txtCsv.Text;
+            string template = txtTemplate.Text;
+            Task t = WriteFileAsync(template,csv,dist);
+            await t;
+        }
+
+        #region WriteToFile
+
+        private async Task WriteFileAsync(string pathTemplate, string pathCsv, string pathDist)
+        {
+            await Task.Run(() => WriteFile(pathTemplate, pathCsv, pathDist));
+        }
+
+        private void WriteFile(string pathTemplate, string pathCsv, string pathDist)
+        {
+            try
+            {
+                Task task = DisableAllButtonsAsync();
+                using (DocX docuement = DocX.Create(pathDist))
+                {
+                    using (DocX template = DocX.Load(pathTemplate))
+                    {
+                        int lineCount = 0;
+                        using (var csv = new CsvReader(new StreamReader(pathCsv), true))
+                        {
+                            lineCount = csv.Count();
+                        }
+                        using (var csv =
+                            new CsvReader(new StreamReader(pathCsv), true))
+                        {
+                            var fieldCount = csv.FieldCount;
+
+                            var headers = csv.GetFieldHeaders();
+                            while (csv.ReadNextRecord())
+                            {
+                                if (csv.CurrentRecordIndex != 0) docuement.InsertSectionPageBreak();
+                                docuement.InsertDocument(template);
+                                for (var i = 0; i < fieldCount; i++)
+                                {
+                                    docuement.ReplaceText(String.Format("<<{0}>>", headers[i]), csv[i]);
+                                }
+                                Task t = UpdatePgbAsync((double) (csv.CurrentRecordIndex + 1)/lineCount*100);
+
+                            }
+
+                        }
+
+                    }
+                    docuement.Save();
+                    if (docuement.Text.Contains("<<") || docuement.Text.Contains(">>"))
+                    {
+                        MessageBox.Show("There is some << / >> not merged.");
+                    }
+                    Task t2 = FinishMergeAsync();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("{0}", ex.Message), "Warning", MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+            }
+            finally
+            {
+                Task task = EnableAllButtonsAsync();
+            }
+            
+        }
+
+        #endregion
+
+        #region Open FileDialog
 
         private string OpenSelectFileDialog(string format, String formatDesc)
         {
@@ -61,12 +144,7 @@ namespace DotNetDocxMerge
             }
 
             return fileName;
-        }
-
-        private void btnDist_Click(object sender, RoutedEventArgs e)
-        {
-            txtDist.Text = OpenSaveFileDialog();
-        }
+        }  
 
         private string OpenSaveFileDialog()
         {
@@ -92,61 +170,24 @@ namespace DotNetDocxMerge
 
         #endregion
 
-        private async void btnStart_Click(object sender, RoutedEventArgs e)
+        #region Set enable button
+
+        private async Task DisableAllButtonsAsync() { await Task.Run(() => Dispatcher.Invoke(DisableAllButtons)); }
+        private async Task EnableAllButtonsAsync() { await Task.Run(() => Dispatcher.Invoke(EnableAllButtons)); }
+        private void DisableAllButtons() { SetEnableToAllButton(false); }
+        private void EnableAllButtons() { SetEnableToAllButton(true); }
+
+        private void SetEnableToAllButton(bool boolVal)
         {
-            string dist = txtDist.Text;
-            string csv = txtCsv.Text;
-            string template = txtTemplate.Text;
-            Task t = WriteFileAsync(template,csv,dist);
-            await t;
+            btnCsv.IsEnabled = boolVal;
+            btnDist.IsEnabled = boolVal;
+            btnTemplate.IsEnabled = boolVal;
+            btnStart.IsEnabled = boolVal;
         }
 
-        private async Task WriteFileAsync(string pathTemplate, string pathCsv, string pathDist)
-        {
-            await Task.Run(() => WriteFile(pathTemplate, pathCsv, pathDist));
-        }
+        #endregion
 
-        private void WriteFile(string pathTemplate, string pathCsv, string pathDist)
-        {
-            using (DocX docuement = DocX.Create(pathDist))
-            {
-                using (DocX template = DocX.Load(pathTemplate))
-                {
-                    int lineCount = 0;
-                    using (var csv = new CsvReader(new StreamReader(pathCsv), true))
-                    {
-                        lineCount = csv.Count();
-                    }
-                    using (var csv =
-                    new CsvReader(new StreamReader(pathCsv), true))
-                    {
-                        var fieldCount = csv.FieldCount;
-                        
-                        var headers = csv.GetFieldHeaders();
-                        while (csv.ReadNextRecord())
-                        {
-                            if(csv.CurrentRecordIndex != 0)docuement.InsertSectionPageBreak();
-                            docuement.InsertDocument(template);
-                            for (var i = 0; i < fieldCount; i++)
-                            {
-                                docuement.ReplaceText(String.Format("<<{0}>>", headers[i]), csv[i]);
-                            }
-                            Task t =  UpdatePgbAsync((double)(csv.CurrentRecordIndex + 1) / lineCount * 100);
-                           
-                        }
-                        
-                    }
-
-                }
-                docuement.Save();
-                if (docuement.Text.Contains("<<") || docuement.Text.Contains(">>"))
-                {
-                    MessageBox.Show("There is some << / >> not merged.");
-                }
-                Task t2 = FinishMergeAsync();
-                
-            }
-        }
+        #region Handle finish merge
 
         private async Task FinishMergeAsync()
         {
@@ -159,11 +200,15 @@ namespace DotNetDocxMerge
             MessageBox.Show("Merge Done");
         }
 
+        #endregion
+
+        #region Handle progressBar update
 
         private async Task UpdatePgbAsync(double percentage)
         {
-            Task t = Task.Run(() => 
-                Dispatcher.Invoke(()=> {
+            Task t = Task.Run(() =>
+                Dispatcher.Invoke(() =>
+                {
                     UpdatePgb(percentage);
                 })
             );
@@ -176,6 +221,14 @@ namespace DotNetDocxMerge
             pgb.Value = percentage;
         }
 
+        #endregion
+
+        
+        /// <summary>
+        /// This is the function to init the txtbox with config value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Initialized(object sender, EventArgs e)
         {
             txtTemplate.Text = DotNetDocxMerge.Properties.Settings.Default.template;
